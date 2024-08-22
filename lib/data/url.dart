@@ -8,5 +8,6 @@ class Url{
     static const String getProfileUrl = "${BaseUrl}api/v1/user";
     static const String updateProfileUrl = "${BaseUrl}api/v1/user/profile";
     static const String etaRequest = "${BaseUrl}api/v1/request/eta";
+    static const String createRequest = "${BaseUrl}api/v1/request/create";
 
 }

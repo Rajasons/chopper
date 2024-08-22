@@ -21,7 +21,4 @@ class AuthController extends GetxController{
 
   RxInt authscreenindex = 0.obs;
 
-
-
-
 }

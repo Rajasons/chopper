@@ -200,7 +200,7 @@ class HomeController extends GetxController {
     return etarequest!;
   }
 
-  Future<void> createEtarequest() async {
+  Future<void> createRequest() async {
     isLoad.value = true;
     String token = await SharedPrefrencesServices.getBearerToken();
     DateTime now = DateTime.now();
@@ -228,9 +228,14 @@ class HomeController extends GetxController {
     };
     print("dat11 ====================${data1}");
 
+    StreamSubscription<DatabaseEvent>? rideStreamStart;
+    StreamSubscription<DatabaseEvent>? rideStreamUpdate;
+    StreamSubscription<DatabaseEvent>? requestStreamStart;
+    StreamSubscription<DatabaseEvent>? requestStreamEnd;
+
 
     var data = await networkApi.postApi(
-      url: Url.etaRequest,
+      url: Url.createRequest,
       header: {
         "Content-Type": "application/json",
         'Authorization': 'Bearer $token'
@@ -246,15 +251,41 @@ class HomeController extends GetxController {
           "payment_opt": "0",
           "pick_address": sourceaddress.value,
           "drop_address": searchToController.text,
-          "promocode_id": 0,
           "request_eta_amount": total.value,
-          "is_later": true,
-          "trip_start_time": formattedDate,
+          "stops":"[21.269190,72.958649]",
+          "is_luggage_available":true,
+          "is_pet_available":true
+          // "is_later": true,
+          // "trip_start_time": formattedDate,
         },
       ),
     ).then(
       (value) {
         print("${value}******************************************");
+        streamRequest() {
+          requestStreamEnd?.cancel();
+          requestStreamStart?.cancel();
+          rideStreamUpdate?.cancel();
+          rideStreamStart?.cancel();
+          requestStreamStart = null;
+          requestStreamEnd = null;
+          rideStreamUpdate = null;
+          rideStreamStart = null;
+
+          requestStreamStart = FirebaseDatabase.instance
+              .ref('request-meta')
+              .child(value['data']['id'])
+              .onChildRemoved
+              .handleError((onError) {
+            requestStreamStart?.cancel();
+          }).listen((event) async {
+            // ismulitipleride = true;
+            // getUserDetails(id: userRequestData['id']);
+            requestStreamEnd?.cancel();
+            requestStreamStart?.cancel();
+          });
+        }
+        streamRequest();
         isLoad.value = false;
       },
     );
@@ -430,9 +461,11 @@ class HomeController extends GetxController {
 //     moveCamera(latlng.value);
 //     isLoad.value = false;
 //   }
-// }
+//
+
 
 }
+
 
 // Future<void> getDirections(List<Location> origin,List<Location >destination) async {
 //

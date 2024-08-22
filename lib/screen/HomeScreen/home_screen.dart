@@ -14,7 +14,6 @@ import 'package:taxiuser/view_model/ProfileController/profile_controller.dart';
 import 'package:taxiuser/widget/custom_icon_with_text_row.dart';
 
 class HomeScreen extends StatefulWidget {
-
   const HomeScreen({super.key});
 
   @override
@@ -22,31 +21,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   HomeController homeController = Get.put(HomeController());
   ProfileController profileController = Get.put(ProfileController());
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
-
-    profileController.setProfileData().then((value)
-    {
-
-      print("${ProfileController.userProfileData.id}===========================id");
-
-    },);
+    profileController.setProfileData().then(
+      (value) {
+        print("${ProfileController.userProfileData.id}===========================id");
+      },
+    );
     ever(homeController.bottonSheetIndex, (_) {
       if (homeController.bottonSheetIndex.value >= 0 &&
           homeController.bottonSheetIndex.value <
               homeController.bottomSheetClass.length) {
         homeController.bottomSheet(Get.context!);
       } else {
-        homeController.bottonSheetIndex.value =
-            -1; // Reset invalid index immediately.
+        homeController.bottonSheetIndex.value = -1; // Reset invalid index immediately.
       }
     });
-
 
     // void resetBottonSheetIndex() {
     //   ever(homeController.bottonSheetIndex, (_) {}).dispose(); // Disable the listener
@@ -85,7 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
               AddVerticalSpace(20),
               InkWell(
                 onTap: () {
-                  Get.toNamed(RouteName.history_Screen,);
+                  Get.toNamed(
+                    RouteName.history_Screen,
+                  );
                 },
                 child: CustomImageWithTextRow(
                   imageurl: AppImage.historyimage,
@@ -249,4 +245,5 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
 }
