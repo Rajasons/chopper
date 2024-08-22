@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "402052933133",
+    "firebase_url": "https://taxiweb-34250-default-rtdb.firebaseio.com",
+    "project_id": "taxiweb-34250",
+    "storage_bucket": "taxiweb-34250.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402052933133:android:667cfdebd8cb7c6d621744",
+        "android_client_info": {
+          "package_name": "com.taxidriver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAW1gGVX6WxbjSBrC5kw6CQustfeQGO8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402052933133:android:6f031b1bd89a1f6e621744",
+        "android_client_info": {
+          "package_name": "com.taxiuser"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAW1gGVX6WxbjSBrC5kw6CQustfeQGO8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
