@@ -26,8 +26,9 @@ class RagistrationController extends GetxController {
   Future<void> ragistrationApi(BuildContext context) async {
 
     isload.value = true;
-    var token = await FirebaseMessaging.instance.getToken();
-    String fcm = token.toString();
+
+    var fcmToken = await FirebaseMessaging.instance.getToken();
+    print(fcmToken);
 
     await networkApi.postApi(
         url: Url.ragisterUrl,
@@ -36,7 +37,7 @@ class RagistrationController extends GetxController {
           'mobile': mobileNumberController.text,
           'password': passwordController.text,
           'email': emailController.text,
-          'device_token': fcm,
+          'device_token': fcmToken,
           'country': 91,
           'login_by': splashController.platform.value,
           'lang': "English",
@@ -45,6 +46,7 @@ class RagistrationController extends GetxController {
         }),
         header: {'Content-Type': 'application/json'}).then((value) {
         if (value['success'] == false) {
+
           isload.value = false;
           ErrorToast(Title: "Error", Message: value['message'], context: context);
 

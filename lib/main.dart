@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:taxiuser/resources/routes/route.dart';
+import 'package:taxiuser/screen/HomeScreen/home_screen.dart';
 import 'package:taxiuser/screen/SplashScreen/splash_screen.dart';
 import 'language/app_translation.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.white),
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
-          home: SplashScreen(),
+          home: HomeScreen(),
           //initialRoute: RouteName.splash_Screen ,
           getPages: route.appRoute(),
         );

@@ -19,7 +19,7 @@ import 'package:taxiuser/screen/IntroScreen/NewIntroScreen/new_introScreen.dart'
 import 'package:taxiuser/screen/IntroScreen/intro_screen.dart';
 import '../../screen/AuthantiCation/SelectModeOfAuth/MobileVerificationScreen/VerifiedSuccessfullyScreen.dart';
 import '../../screen/AuthantiCation/SelectModeOfAuth/MobileVerificationScreen/verification_screen.dart';
-import '../../screen/AuthantiCation/SelectModeOfAuth/auth_screen.dart';
+import '../../screen/AuthantiCation/SelectModeOfAuth/EmailVerificationScreen/auth_screen.dart';
 import '../../screen/AuthantiCation/SelectModeOfAuth/select_mode_of_login.dart';
 import '../../screen/SplashScreen/splash_screen.dart';
 

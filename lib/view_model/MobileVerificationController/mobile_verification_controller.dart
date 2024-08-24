@@ -23,14 +23,14 @@ class MobileVerificationController extends GetxController {
 
   Future<void> mobileLoginAPi(BuildContext context) async {
     isload.value = true;
-    var token = FirebaseMessaging.instance.getToken();
-    String fcm = token.toString();
+    var fcmToken = await FirebaseMessaging.instance.getToken();
+    print(fcmToken);
 
     await networkApi.postApi(
       url: Url.loginUrl,
       body: {
         "mobile": mobilenumberController.text,
-        "device_token": fcm,
+        "device_token": fcmToken,
         "login_by": "android"
       },
     ).then(
@@ -38,7 +38,7 @@ class MobileVerificationController extends GetxController {
         if (value['success'] == false) {
           isload.value = false;
           authController.authscreenindex.value = 1;
-          Get.offAllNamed(RouteName.auth_Screen);
+          Get.offNamed(RouteName.auth_Screen);
           ErrorToast(
               Title: "Error", Message: value['message'], context: context);
         } else {

@@ -24,7 +24,6 @@ class _AuthScreenState extends State<AuthScreen> {
     RagistrationController ragistrationController = Get.put(RagistrationController());
     LoginController loginController = Get.put(LoginController());
 
-
     return Obx(
       () => Scaffold(
         body: Column(
@@ -48,4 +47,5 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
+
 }

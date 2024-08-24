@@ -22,7 +22,6 @@ class Login extends StatelessWidget {
     final authcontroller = AuthController.instant;
     final logincontroller = LoginController.instant;
 
-
     return Form(
       key: _globalKey,
       child: Expanded(

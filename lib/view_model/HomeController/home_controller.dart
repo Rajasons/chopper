@@ -337,6 +337,7 @@ class HomeController extends GetxController {
       if (permission == LocationPermission.deniedForever) {
         await Geolocator.openLocationSettings();
       }
+
     }
 
     Timer.periodic(
